@@ -1,7 +1,7 @@
 /**
  * zeppos-animation-player.js
  * @description An advanced animation library based on Zeppos-Fx. 一个基于zeppos-fx的进阶动画库
- * @version 1.0.0
+ * @version 1.0.1
  * @date 2024/01/19
  * @author XiaomaiTX
  * @license MIT
@@ -31,7 +31,7 @@ export class ZeppAnim {
 		this.tracks.forEach((track) => {
 			setTimeout(() => {
 				this.start(0, track, null);
-			}, track.startTime * 1000 || 0);
+			}, track.config.startTime * 1000 || 0);
 		});
 	}
 	start(index, track, prevParams) {
@@ -55,11 +55,14 @@ export class ZeppAnim {
 					end: 1,
 					fps: frame.fps || 60,
 					time: frame.time || 1,
-					style: frame.style || Fx.Styles.EASE_IN_OUT_QUAD,
+					style: frame.style || Fx.Styles.LINEAR,
 					onStop: onStopCallback || null,
 					func: durationFunc || null,
 				});
 			}, track.frames[index].delay * 1000 || 0);
+		} else if (track.config.repeat === true) {
+			index = null;
+			this.start(0, track, null);
 		}
 	}
 }
