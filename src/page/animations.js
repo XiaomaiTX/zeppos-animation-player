@@ -1,3 +1,28 @@
+/**
+ * animations.js
+ * @description 动画的预设与脚本
+ *
+ * @example
+ *
+ * TODO: 待补充
+ *
+ * 创建动画轨道 TRACK_1 = { startTime: 0, frames: [{ frame1 }, { frame2 }] };
+ *
+ * 创建轨道内的单个关键帧
+ * frame1 = {
+	delay: 0, // 延迟执行（可选）
+	style: Fx.Styles.EASE_IN_OUT_QUAD, // 动画类型（可选）
+	fps: 60, // 动画帧率（可选）
+	time: 1, // 动画时间（可选）
+	begin: {}, // 起始位置
+	end: {}, //	结束位置
+	init_func: (params) => {}, // 动画初始化
+	duration_func: (percent, begin, end, params) => {}, // 动画过程
+	end_func: (params) => {}, // 动画结束
+};
+
+ *
+ */
 import { Fx, lerp } from "../libs/zeppos-animation-player";
 import * as hmUI from "@zos/ui";
 
